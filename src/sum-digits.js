@@ -13,25 +13,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getSumOfDigits(n) {
-	if(n < 10) {
-  	return n;
-  }else {
-  	let strN = String(n);
-  	let sum = 0;
+	let strN = String(n);
+	let sum = 0;
 
-  	for(let i = 0; i < strN.length; i++) {
-    	if(i == strN.length - 1){
-     		break;
-    	}
-  		sum = sum + Number(strN[i]) + Number(strN[i + 1]);
-  	}
-  	if(sum >= 10) {
-  		sum = getSumOfDigits(sum);
-    	return sum;
-  	}else {
-  		return sum;
-  	}
-  }
+	for(let i = 0; i < strN.length; i++) {
+	  if(i == strN.length) {
+		break;
+	  }
+	  sum += Number(strN[i]);
+	}
+	if(sum >= 10) {
+	  return getSumOfDigits(sum);
+	}else {
+	  return sum;
+	}
 }
 
 module.exports = {
